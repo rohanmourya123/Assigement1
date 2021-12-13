@@ -1,0 +1,40 @@
+{% extends "base.html"%}
+{% block content %}
+<html>
+<style>
+    #container ul { list-style: none; }
+#container .buttons { margin-bottom: 20px; }
+
+#container .list li { width: 100%; border-bottom: 1px dotted #CCC; margin-bottom: 10px; padding-bottom: 10px; }
+
+#container .grid li { float: left; width: 20%; height: 50px; border-right: 1px dotted #CCC; border-bottom: 1px dotted #CCC; padding: 20px; }
+</style>
+
+<body>
+
+
+
+<div id="container">
+    <div> <h3 style="color: Green;" align="center">POSTED ITEMS BY USER </h3></div><br>
+    {% for i in  lis %}
+    <ul class="list">
+
+        <li><h4 style="color: red;"> Posted by {{i.user}}  </h4>{{i.texts }}</li>
+
+
+    </ul>
+    {% endfor %}
+</div>
+<script>
+    $('button').click(function(e) {
+    if ($(this).hasClass('grid')) {
+        $('#container ul').removeClass('list').addClass('grid');
+    }
+    else if($(this).hasClass('list')) {
+        $('#container ul').removeClass('grid').addClass('list');
+    }
+});
+</script>
+</body>
+</html>
+{% endblock %}
